@@ -1,0 +1,1462 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-ide",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2021-01-30T00:01:02Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648532",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.442269, 43.6127455 ],
+            [ 1.4422776, 43.6127502 ],
+            [ 1.4422663, 43.6127637 ],
+            [ 1.4422562, 43.6127745 ],
+            [ 1.4422476, 43.6127698 ],
+            [ 1.442269, 43.6127455 ]
+          ]
+        ]
+      },
+      "id": "way/64648532"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648534",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4422963, 43.6125355 ],
+            [ 1.44237, 43.6125656 ],
+            [ 1.4422975, 43.6126585 ],
+            [ 1.4422379, 43.6126321 ],
+            [ 1.4422322, 43.612643 ],
+            [ 1.4422181, 43.6126364 ],
+            [ 1.4422963, 43.6125355 ]
+          ]
+        ]
+      },
+      "id": "way/64648534"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648563",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4426741, 43.6125351 ],
+            [ 1.4427644, 43.612601 ],
+            [ 1.4427242, 43.6126323 ],
+            [ 1.4426191, 43.6125872 ],
+            [ 1.4426741, 43.6125351 ]
+          ]
+        ]
+      },
+      "id": "way/64648563"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648597",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.441493, 43.6124272 ],
+            [ 1.4416109, 43.6124415 ],
+            [ 1.4416047, 43.6124688 ],
+            [ 1.4414846, 43.6124553 ],
+            [ 1.441493, 43.6124272 ]
+          ]
+        ]
+      },
+      "id": "way/64648597"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648624",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.441875, 43.6130773 ],
+            [ 1.4419187, 43.6130974 ],
+            [ 1.4419605, 43.6131167 ],
+            [ 1.4418816, 43.6132076 ],
+            [ 1.4418697, 43.6132011 ],
+            [ 1.4418888, 43.6131813 ],
+            [ 1.4418444, 43.6131616 ],
+            [ 1.4418296, 43.6131823 ],
+            [ 1.4417972, 43.6131673 ],
+            [ 1.4418174, 43.6131448 ],
+            [ 1.441875, 43.6130773 ]
+          ]
+        ]
+      },
+      "id": "way/64648624"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648658",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4418209, 43.6125391 ],
+            [ 1.4418869, 43.61257 ],
+            [ 1.4418631, 43.6125989 ],
+            [ 1.4417992, 43.6125725 ],
+            [ 1.4418209, 43.6125391 ]
+          ]
+        ]
+      },
+      "id": "way/64648658"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648667",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4421899, 43.6127563 ],
+            [ 1.4422483, 43.6127835 ],
+            [ 1.442175, 43.6128681 ],
+            [ 1.4421154, 43.6128409 ],
+            [ 1.4421899, 43.6127563 ]
+          ]
+        ]
+      },
+      "id": "way/64648667"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648701",
+        "building": "apartments",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4419246, 43.6123811 ],
+            [ 1.442073, 43.6124423 ],
+            [ 1.4420049, 43.6125388 ],
+            [ 1.4418596, 43.6124804 ],
+            [ 1.4418938, 43.6124282 ],
+            [ 1.4419246, 43.6123811 ]
+          ]
+        ]
+      },
+      "id": "way/64648701"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648783",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4425867, 43.6128719 ],
+            [ 1.4426193, 43.6128377 ],
+            [ 1.4426669, 43.6128593 ],
+            [ 1.4427019, 43.6128197 ],
+            [ 1.4427182, 43.6128263 ],
+            [ 1.4427103, 43.6128353 ],
+            [ 1.4427035, 43.6128425 ],
+            [ 1.4426527, 43.612901 ],
+            [ 1.4426391, 43.612919 ],
+            [ 1.4425742, 43.6128881 ],
+            [ 1.4425867, 43.6128719 ]
+          ]
+        ]
+      },
+      "id": "way/64648783"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648848",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4420666, 43.6125643 ],
+            [ 1.4421143, 43.6125849 ],
+            [ 1.4421075, 43.612594 ],
+            [ 1.4420587, 43.6125751 ],
+            [ 1.4420666, 43.6125643 ]
+          ]
+        ]
+      },
+      "id": "way/64648848"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648913",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4418058, 43.6130435 ],
+            [ 1.4418396, 43.61306 ],
+            [ 1.441875, 43.6130773 ],
+            [ 1.4418174, 43.6131448 ],
+            [ 1.4417448, 43.6131147 ],
+            [ 1.4418058, 43.6130435 ]
+          ]
+        ]
+      },
+      "id": "way/64648913"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648935",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4415617, 43.6129965 ],
+            [ 1.4415757, 43.6130031 ],
+            [ 1.4415373, 43.6130499 ],
+            [ 1.4415221, 43.6130434 ],
+            [ 1.4415617, 43.6129965 ]
+          ]
+        ]
+      },
+      "id": "way/64648935"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648948",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4425084, 43.6127642 ],
+            [ 1.4425174, 43.6127543 ],
+            [ 1.4425636, 43.6127012 ],
+            [ 1.4426167, 43.6127247 ],
+            [ 1.4426054, 43.6127373 ],
+            [ 1.4425017, 43.6128552 ],
+            [ 1.4424497, 43.6128308 ],
+            [ 1.4425084, 43.6127642 ]
+          ]
+        ]
+      },
+      "id": "way/64648948"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64648963",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4422506, 43.6131661 ],
+            [ 1.4423443, 43.6130563 ],
+            [ 1.442367, 43.6130675 ],
+            [ 1.4422722, 43.6131764 ],
+            [ 1.4422506, 43.6131661 ]
+          ]
+        ]
+      },
+      "id": "way/64648963"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649073",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4419156, 43.6126014 ],
+            [ 1.4420164, 43.6126456 ],
+            [ 1.4419599, 43.6127131 ],
+            [ 1.4420486, 43.6127544 ],
+            [ 1.442026, 43.6127814 ],
+            [ 1.4418322, 43.6126959 ],
+            [ 1.4419156, 43.6126014 ]
+          ]
+        ]
+      },
+      "id": "way/64649073"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649110",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4425184, 43.6126277 ],
+            [ 1.4425986, 43.6126607 ],
+            [ 1.4425636, 43.6127012 ],
+            [ 1.4425174, 43.6127543 ],
+            [ 1.4424394, 43.6127214 ],
+            [ 1.4425184, 43.6126277 ]
+          ]
+        ]
+      },
+      "id": "way/64649110"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649121",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4416522, 43.6127964 ],
+            [ 1.4417681, 43.612849 ],
+            [ 1.4418308, 43.6128781 ],
+            [ 1.4418622, 43.6128922 ],
+            [ 1.4418036, 43.6129588 ],
+            [ 1.4416477, 43.6128865 ],
+            [ 1.441637, 43.6128791 ],
+            [ 1.4416295, 43.6128699 ],
+            [ 1.4416222, 43.6128552 ],
+            [ 1.4416248, 43.6128389 ],
+            [ 1.4416324, 43.6128271 ],
+            [ 1.4416522, 43.6127964 ]
+          ]
+        ]
+      },
+      "id": "way/64649121"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649123",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4424426, 43.6125957 ],
+            [ 1.4425184, 43.6126277 ],
+            [ 1.4424394, 43.6127214 ],
+            [ 1.4423733, 43.6126923 ],
+            [ 1.4423665, 43.6127004 ],
+            [ 1.4423568, 43.6126948 ],
+            [ 1.4423625, 43.6126867 ],
+            [ 1.4424426, 43.6125957 ]
+          ]
+        ]
+      },
+      "id": "way/64649123"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649149",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4421554, 43.6124762 ],
+            [ 1.4421857, 43.6124893 ],
+            [ 1.4421528, 43.6125335 ],
+            [ 1.4421214, 43.6125213 ],
+            [ 1.4421554, 43.6124762 ]
+          ]
+        ]
+      },
+      "id": "way/64649149"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649253",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4427266, 43.6124957 ],
+            [ 1.4427459, 43.6125096 ],
+            [ 1.4428169, 43.6125607 ],
+            [ 1.4427644, 43.612601 ],
+            [ 1.4426741, 43.6125351 ],
+            [ 1.4426964, 43.6125181 ],
+            [ 1.4427266, 43.6124957 ]
+          ]
+        ]
+      },
+      "id": "way/64649253"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649261",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4422663, 43.6127637 ],
+            [ 1.4422776, 43.6127502 ],
+            [ 1.4423101, 43.6127661 ],
+            [ 1.4422977, 43.6127796 ],
+            [ 1.4422663, 43.6127637 ]
+          ]
+        ]
+      },
+      "id": "way/64649261"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649311",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4414737, 43.6124542 ],
+            [ 1.4414846, 43.6124553 ],
+            [ 1.4416047, 43.6124688 ],
+            [ 1.4416462, 43.612473 ],
+            [ 1.4416624, 43.6124814 ],
+            [ 1.4416455, 43.6125458 ],
+            [ 1.441629, 43.6125483 ],
+            [ 1.4416217, 43.6125774 ],
+            [ 1.4415452, 43.6125691 ],
+            [ 1.4415092, 43.612564 ],
+            [ 1.4414514, 43.612556 ],
+            [ 1.4414737, 43.6124542 ]
+          ]
+        ]
+      },
+      "id": "way/64649311"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649365",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4423388, 43.6127993 ],
+            [ 1.4423512, 43.6127849 ],
+            [ 1.4423815, 43.612799 ],
+            [ 1.4423702, 43.6128125 ],
+            [ 1.4423388, 43.6127993 ]
+          ]
+        ]
+      },
+      "id": "way/64649365"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649385",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4423681, 43.6130675 ],
+            [ 1.4423862, 43.6130459 ],
+            [ 1.4424013, 43.6130525 ],
+            [ 1.4423754, 43.6130831 ],
+            [ 1.4424631, 43.6131216 ],
+            [ 1.4424957, 43.6130874 ],
+            [ 1.4425098, 43.613094 ],
+            [ 1.4424455, 43.6131678 ],
+            [ 1.4423902, 43.6132309 ],
+            [ 1.4423305, 43.6132033 ],
+            [ 1.4422722, 43.6131764 ],
+            [ 1.4423681, 43.6130675 ]
+          ]
+        ]
+      },
+      "id": "way/64649385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649423",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4417681, 43.612849 ],
+            [ 1.4417805, 43.6128337 ],
+            [ 1.4418422, 43.6128627 ],
+            [ 1.4418308, 43.6128781 ],
+            [ 1.4417681, 43.612849 ]
+          ]
+        ]
+      },
+      "id": "way/64649423"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649443",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4424616, 43.6124521 ],
+            [ 1.4424876, 43.6124205 ],
+            [ 1.4426024, 43.6124694 ],
+            [ 1.4425064, 43.6125401 ],
+            [ 1.4424208, 43.6125043 ],
+            [ 1.4424616, 43.6124521 ]
+          ]
+        ]
+      },
+      "id": "way/64649443"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649445",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4423665, 43.6127004 ],
+            [ 1.4423733, 43.6126923 ],
+            [ 1.4424394, 43.6127214 ],
+            [ 1.4424326, 43.6127295 ],
+            [ 1.4423665, 43.6127004 ]
+          ]
+        ]
+      },
+      "id": "way/64649445"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649554",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4426408, 43.612511 ],
+            [ 1.4426609, 43.6124957 ],
+            [ 1.442677, 43.612506 ],
+            [ 1.4426964, 43.6125181 ],
+            [ 1.4426741, 43.6125351 ],
+            [ 1.4426408, 43.612511 ]
+          ]
+        ]
+      },
+      "id": "way/64649554"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649607",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4421143, 43.6125849 ],
+            [ 1.4421528, 43.6125335 ],
+            [ 1.4421857, 43.6124893 ],
+            [ 1.4422963, 43.6125355 ],
+            [ 1.4422181, 43.6126364 ],
+            [ 1.4422056, 43.6126536 ],
+            [ 1.4421374, 43.6126244 ],
+            [ 1.4421201, 43.6126169 ],
+            [ 1.4420973, 43.6126066 ],
+            [ 1.4421075, 43.612594 ],
+            [ 1.4421143, 43.6125849 ]
+          ]
+        ]
+      },
+      "id": "way/64649607"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649641",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4421899, 43.6127563 ],
+            [ 1.4421978, 43.6127473 ],
+            [ 1.4422476, 43.6127698 ],
+            [ 1.4422562, 43.6127745 ],
+            [ 1.4422483, 43.6127835 ],
+            [ 1.4421899, 43.6127563 ]
+          ]
+        ]
+      },
+      "id": "way/64649641"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649643",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.441508, 43.6126542 ],
+            [ 1.4415997, 43.6126673 ],
+            [ 1.4415803, 43.6126971 ],
+            [ 1.4415006, 43.6126851 ],
+            [ 1.441508, 43.6126542 ]
+          ]
+        ]
+      },
+      "id": "way/64649643"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649694",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4419439, 43.6129516 ],
+            [ 1.4419586, 43.6129354 ],
+            [ 1.4420712, 43.612987 ],
+            [ 1.4420114, 43.6130554 ],
+            [ 1.441957, 43.6130303 ],
+            [ 1.4418977, 43.6130029 ],
+            [ 1.4419124, 43.6129867 ],
+            [ 1.4419439, 43.6129516 ]
+          ]
+        ]
+      },
+      "id": "way/64649694"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649712",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4425283, 43.6128829 ],
+            [ 1.4425385, 43.6128721 ],
+            [ 1.4425579, 43.6128815 ],
+            [ 1.4425489, 43.6128932 ],
+            [ 1.4425283, 43.6128829 ]
+          ]
+        ]
+      },
+      "id": "way/64649712"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649736",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4425805, 43.6125557 ],
+            [ 1.4425946, 43.6125623 ],
+            [ 1.4425844, 43.612574 ],
+            [ 1.4425682, 43.6125655 ],
+            [ 1.4425805, 43.6125557 ]
+          ]
+        ]
+      },
+      "id": "way/64649736"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649752",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4424326, 43.6127295 ],
+            [ 1.4424394, 43.6127214 ],
+            [ 1.4425174, 43.6127543 ],
+            [ 1.4425084, 43.6127642 ],
+            [ 1.4424326, 43.6127295 ]
+          ]
+        ]
+      },
+      "id": "way/64649752"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649784",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.442117, 43.6126524 ],
+            [ 1.4421374, 43.6126244 ],
+            [ 1.4422056, 43.6126536 ],
+            [ 1.4421841, 43.6126815 ],
+            [ 1.442117, 43.6126524 ]
+          ]
+        ]
+      },
+      "id": "way/64649784"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649788",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4426054, 43.6127373 ],
+            [ 1.4426791, 43.6127693 ],
+            [ 1.4426193, 43.6128377 ],
+            [ 1.4425867, 43.6128719 ],
+            [ 1.4425791, 43.612869 ],
+            [ 1.4425858, 43.6128609 ],
+            [ 1.4425501, 43.612845 ],
+            [ 1.4425445, 43.6128522 ],
+            [ 1.442532, 43.6128693 ],
+            [ 1.4425017, 43.6128552 ],
+            [ 1.4426054, 43.6127373 ]
+          ]
+        ]
+      },
+      "id": "way/64649788"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649804",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4426954, 43.6124734 ],
+            [ 1.4427094, 43.6124836 ],
+            [ 1.442677, 43.612506 ],
+            [ 1.4426609, 43.6124957 ],
+            [ 1.4426954, 43.6124734 ]
+          ]
+        ]
+      },
+      "id": "way/64649804"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649819",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4425459, 43.6123648 ],
+            [ 1.4427153, 43.6122523 ],
+            [ 1.4427592, 43.6122864 ],
+            [ 1.4428119, 43.6123274 ],
+            [ 1.442677, 43.6124213 ],
+            [ 1.4426537, 43.6124337 ],
+            [ 1.4426311, 43.6124188 ],
+            [ 1.4426389, 43.6124135 ],
+            [ 1.4426368, 43.6124107 ],
+            [ 1.4426703, 43.6123857 ],
+            [ 1.4426847, 43.6123776 ],
+            [ 1.4426503, 43.6123508 ],
+            [ 1.4426417, 43.6123443 ],
+            [ 1.4426194, 43.6123604 ],
+            [ 1.442628, 43.6123659 ],
+            [ 1.4425656, 43.6124097 ],
+            [ 1.4425235, 43.6123837 ],
+            [ 1.4425459, 43.6123648 ]
+          ]
+        ]
+      },
+      "id": "way/64649819"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649830",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4418596, 43.6124804 ],
+            [ 1.4420049, 43.6125388 ],
+            [ 1.4419844, 43.6125677 ],
+            [ 1.4420136, 43.6125809 ],
+            [ 1.4419875, 43.6126169 ],
+            [ 1.4418869, 43.61257 ],
+            [ 1.4418209, 43.6125391 ],
+            [ 1.441835, 43.6125178 ],
+            [ 1.4418596, 43.6124804 ]
+          ]
+        ]
+      },
+      "id": "way/64649830"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649869",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4426492, 43.6124382 ],
+            [ 1.4426901, 43.6124679 ],
+            [ 1.4426954, 43.6124734 ],
+            [ 1.4426609, 43.6124957 ],
+            [ 1.4426408, 43.612511 ],
+            [ 1.4425805, 43.6125557 ],
+            [ 1.4425682, 43.6125655 ],
+            [ 1.4425064, 43.6125401 ],
+            [ 1.4426024, 43.6124694 ],
+            [ 1.4426492, 43.6124382 ]
+          ]
+        ]
+      },
+      "id": "way/64649869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64649934",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4414984, 43.6130312 ],
+            [ 1.4415221, 43.6130434 ],
+            [ 1.4415373, 43.6130499 ],
+            [ 1.4417073, 43.613126 ],
+            [ 1.4416701, 43.6131683 ],
+            [ 1.441696, 43.6131823 ],
+            [ 1.4416802, 43.6132012 ],
+            [ 1.4415438, 43.6131384 ],
+            [ 1.4415766, 43.6130997 ],
+            [ 1.4414813, 43.6130574 ],
+            [ 1.4414984, 43.6130312 ]
+          ]
+        ]
+      },
+      "id": "way/64649934"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650067",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4421532, 43.6126929 ],
+            [ 1.4421683, 43.6126995 ],
+            [ 1.442157, 43.612713 ],
+            [ 1.442144, 43.6127065 ],
+            [ 1.4421532, 43.6126929 ]
+          ]
+        ]
+      },
+      "id": "way/64650067"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650145",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4423454, 43.6128413 ],
+            [ 1.4424136, 43.6128732 ],
+            [ 1.4423143, 43.6129893 ],
+            [ 1.4422742, 43.6129715 ],
+            [ 1.4422482, 43.613003 ],
+            [ 1.4423488, 43.6130508 ],
+            [ 1.4423443, 43.6130563 ],
+            [ 1.4422506, 43.6131661 ],
+            [ 1.4421947, 43.6131401 ],
+            [ 1.4421175, 43.6131042 ],
+            [ 1.4421998, 43.6130097 ],
+            [ 1.4423454, 43.6128413 ]
+          ]
+        ]
+      },
+      "id": "way/64650145"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650156",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4420973, 43.6126066 ],
+            [ 1.4421201, 43.6126169 ],
+            [ 1.4421053, 43.6126349 ],
+            [ 1.4420815, 43.6126273 ],
+            [ 1.4420973, 43.6126066 ]
+          ]
+        ]
+      },
+      "id": "way/64650156"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650214",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4425445, 43.6128522 ],
+            [ 1.4425501, 43.612845 ],
+            [ 1.4425858, 43.6128609 ],
+            [ 1.4425791, 43.612869 ],
+            [ 1.4425445, 43.6128522 ]
+          ]
+        ]
+      },
+      "id": "way/64650214"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650280",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4428119, 43.6123274 ],
+            [ 1.4428416, 43.6123504 ],
+            [ 1.442885, 43.612384 ],
+            [ 1.4428069, 43.6124376 ],
+            [ 1.4427835, 43.6124528 ],
+            [ 1.4427735, 43.6124599 ],
+            [ 1.4427369, 43.6124348 ],
+            [ 1.4427272, 43.6124274 ],
+            [ 1.442706, 43.6124426 ],
+            [ 1.442677, 43.6124213 ],
+            [ 1.4428119, 43.6123274 ]
+          ]
+        ]
+      },
+      "id": "way/64650280"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650426",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4426517, 43.6131114 ],
+            [ 1.4427464, 43.6130052 ],
+            [ 1.4427679, 43.61298 ],
+            [ 1.4428318, 43.6130091 ],
+            [ 1.4428956, 43.6130391 ],
+            [ 1.442864, 43.6130751 ],
+            [ 1.4428196, 43.6130554 ],
+            [ 1.4427841, 43.6130321 ],
+            [ 1.4427266, 43.6130951 ],
+            [ 1.4427342, 43.6130979 ],
+            [ 1.4426462, 43.6131988 ],
+            [ 1.4426297, 43.6132031 ],
+            [ 1.44262, 43.6131975 ],
+            [ 1.4426018, 43.613221 ],
+            [ 1.442669, 43.6132492 ],
+            [ 1.4427209, 43.6131889 ],
+            [ 1.4427274, 43.6131926 ],
+            [ 1.4427499, 43.6131701 ],
+            [ 1.4427704, 43.6131813 ],
+            [ 1.442705, 43.6132551 ],
+            [ 1.4426294, 43.6133425 ],
+            [ 1.4425616, 43.6133114 ],
+            [ 1.4425006, 43.6132834 ],
+            [ 1.4425141, 43.6132681 ],
+            [ 1.442557, 43.6132185 ],
+            [ 1.4426517, 43.6131114 ]
+          ]
+        ]
+      },
+      "id": "way/64650426"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650441",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4418174, 43.6127185 ],
+            [ 1.4419559, 43.6127823 ],
+            [ 1.4419311, 43.6128093 ],
+            [ 1.4419384, 43.6128267 ],
+            [ 1.4419192, 43.6128474 ],
+            [ 1.4418973, 43.6128498 ],
+            [ 1.4418736, 43.6128768 ],
+            [ 1.4418422, 43.6128627 ],
+            [ 1.4417805, 43.6128337 ],
+            [ 1.4417361, 43.6128139 ],
+            [ 1.4418174, 43.6127185 ]
+          ]
+        ]
+      },
+      "id": "way/64650441"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650559",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4415937, 43.612945 ],
+            [ 1.4418058, 43.6130435 ],
+            [ 1.4417448, 43.6131147 ],
+            [ 1.4418174, 43.6131448 ],
+            [ 1.4417972, 43.6131673 ],
+            [ 1.4417073, 43.613126 ],
+            [ 1.4415373, 43.6130499 ],
+            [ 1.4415757, 43.6130031 ],
+            [ 1.4415617, 43.6129965 ],
+            [ 1.4415519, 43.6129927 ],
+            [ 1.4415937, 43.612945 ]
+          ]
+        ]
+      },
+      "id": "way/64650559"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650573",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4426492, 43.6124382 ],
+            [ 1.4426537, 43.6124337 ],
+            [ 1.442677, 43.6124213 ],
+            [ 1.442706, 43.6124426 ],
+            [ 1.4427272, 43.6124274 ],
+            [ 1.4427369, 43.6124348 ],
+            [ 1.4426901, 43.6124679 ],
+            [ 1.4426492, 43.6124382 ]
+          ]
+        ]
+      },
+      "id": "way/64650573"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650653",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.44237, 43.6125656 ],
+            [ 1.4424426, 43.6125957 ],
+            [ 1.4423625, 43.6126867 ],
+            [ 1.4422975, 43.6126585 ],
+            [ 1.44237, 43.6125656 ]
+          ]
+        ]
+      },
+      "id": "way/64650653"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650673",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4421528, 43.6125335 ],
+            [ 1.4421143, 43.6125849 ],
+            [ 1.4420666, 43.6125643 ],
+            [ 1.4421051, 43.6125147 ],
+            [ 1.4421214, 43.6125213 ],
+            [ 1.4421528, 43.6125335 ]
+          ]
+        ]
+      },
+      "id": "way/64650673"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650703",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4415452, 43.6125691 ],
+            [ 1.4416217, 43.6125774 ],
+            [ 1.4416555, 43.6125815 ],
+            [ 1.4416372, 43.6126104 ],
+            [ 1.4415379, 43.6125972 ],
+            [ 1.4415452, 43.6125691 ]
+          ]
+        ]
+      },
+      "id": "way/64650703"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650706",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4420114, 43.6130554 ],
+            [ 1.4420712, 43.612987 ],
+            [ 1.4420926, 43.6129618 ],
+            [ 1.4421998, 43.6130097 ],
+            [ 1.4421175, 43.6131042 ],
+            [ 1.4420552, 43.6130756 ],
+            [ 1.4420114, 43.6130554 ]
+          ]
+        ]
+      },
+      "id": "way/64650706"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650888",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4426527, 43.612901 ],
+            [ 1.4426668, 43.6129076 ],
+            [ 1.4426554, 43.6129265 ],
+            [ 1.4426521, 43.6129256 ],
+            [ 1.4426391, 43.612919 ],
+            [ 1.4426527, 43.612901 ]
+          ]
+        ]
+      },
+      "id": "way/64650888"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650915",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4422322, 43.612643 ],
+            [ 1.4422379, 43.6126321 ],
+            [ 1.4422975, 43.6126585 ],
+            [ 1.4422907, 43.6126675 ],
+            [ 1.4422322, 43.612643 ]
+          ]
+        ]
+      },
+      "id": "way/64650915"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650919",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4423955, 43.6124238 ],
+            [ 1.4424616, 43.6124521 ],
+            [ 1.4424208, 43.6125043 ],
+            [ 1.4423547, 43.6124761 ],
+            [ 1.4423955, 43.6124238 ]
+          ]
+        ]
+      },
+      "id": "way/64650919"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64650991",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4425098, 43.613094 ],
+            [ 1.4425245, 43.6130769 ],
+            [ 1.4426111, 43.6131172 ],
+            [ 1.4426235, 43.613101 ],
+            [ 1.4426517, 43.6131114 ],
+            [ 1.442557, 43.6132185 ],
+            [ 1.4424455, 43.6131678 ],
+            [ 1.4425098, 43.613094 ]
+          ]
+        ]
+      },
+      "id": "way/64650991"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64651020",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4419299, 43.612945 ],
+            [ 1.4419439, 43.6129516 ],
+            [ 1.4419124, 43.6129867 ],
+            [ 1.4418994, 43.612981 ],
+            [ 1.4419299, 43.612945 ]
+          ]
+        ]
+      },
+      "id": "way/64651020"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/64651041",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010",
+        "wall": "no"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [ 1.4423454, 43.6128413 ],
+            [ 1.4423702, 43.6128125 ],
+            [ 1.4423815, 43.612799 ],
+            [ 1.4424497, 43.6128308 ],
+            [ 1.4424136, 43.6128732 ],
+            [ 1.4423454, 43.6128413 ]
+          ]
+        ]
+      },
+      "id": "way/64651041"
+    }
+  ]
+}

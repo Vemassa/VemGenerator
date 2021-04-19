@@ -1,0 +1,44 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-ide",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2021-01-28T12:03:03Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/75550061",
+        "building": "yes",
+        "source": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1.4026463,
+              43.6216211
+            ],
+            [
+              1.4027565,
+              43.6215115
+            ],
+            [
+              1.4031011,
+              43.6216948
+            ],
+            [
+              1.4029898,
+              43.6218044
+            ],
+            [
+              1.4026463,
+              43.6216211
+            ]
+          ]
+        ]
+      },
+      "id": "way/75550061"
+    }
+  ]
+}
