@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
 public class PluginEditorWindow : EditorWindow
 {
+
     [MenuItem("VemGeneration/Tools")]
     public static void ShowWindow()
     {
@@ -13,6 +15,6 @@ public class PluginEditorWindow : EditorWindow
 
     public void OnGUI()
     {
-        var myString = EditorGUILayout.TextField("Text Field", "flflfl");
+        var centerGeoPoint = EditorGUILayout.Vector2Field("Center point coordinates", new Vector2(0, 0));
     }
 }

@@ -124,7 +124,11 @@ public class Buildings : MonoBehaviour
 
     void Start()
     {
-        GeoZone();
+        //GeoZone();
+        float lat = 43.61101106499544f;
+        float lon = 1.4333198298248702f;
+
+        CoordinatesUtils.SquareFromCenter((lat, lon), 100);
     }
 
     private void Update()
