@@ -1,122 +1,75 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using Habrador_Computational_Geometry;
 using System.Linq;
 
-public static class JsonHelper
-{
-    public static T[] FromJson<T>(string json)
-    {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Items;
-    }
-
-    public static string ToJson<T>(T[] array)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper);
-    }
-
-    public static string ToJson<T>(T[] array, bool prettyPrint)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper, prettyPrint);
-    }
-
-    [Serializable]
-    private class Wrapper<T>
-    {
-        public T[] Items;
-    }
-}
 
 [Serializable]
-public class BuildingsData
+public class DataProperties
 {
-    public string type;
+    public string version;
     public string generator;
-    public string copyright;
-    public string timestamp;
-    public Feature[] features;
+    public Osm3s osm3s;
+    public Elements[] elements;
 }
 
-[Serializable]
-public class Feature
+public class Osm3s
+{
+    public string timestamp_osm_base;
+    public string copyright;
+}
+
+public class Elements
 {
     public string type;
-    public Properties properties;
-    public Geometry geometry;
     public string id;
+    public Bounds bounds;
+    public long[] nodes;
+    public Geometry[] geometry;
+    public Tags tags;
 }
 
-[Serializable]
-public class Properties
+public class Bounds
 {
-    public string id;
+    public float minLat;
+    public float minLon;
+    public float maxLat;
+    public float maxLon;
+}
+
+public class Geometry
+{
+    public float lat;
+    public float lon;
+}
+
+public class Tags
+{
     public string building;
+    public string buildingLevels;
     public string source;
 }
 
 public class Tile
 {
-    public Vector3 TopLeft { get; }
-    public Vector3 BottomRight { get; }
+    public Coords BottomLeft { get; }
+    public Coords TopRight { get; }
+    public Vector3 SimBottomLeft { get; }
+    public Vector3 SimTopRight { get; }
 
-    public Vector3 SimTopLeft { get; }
-    public Vector3 SimBottomRight { get; }
-
-    public Tile(Vector3 topLeft, Vector3 bottomRight, Vector3 simTopLeft, Vector3 simBottomRight)
+    public Tile(Coords bottomLeft, Coords topRight, Vector3 simBottomLeft, Vector3 simTopRight)
     {
-        this.TopLeft = topLeft;
-        this.BottomRight = bottomRight;
-        this.SimTopLeft = simTopLeft;
-        this.SimBottomRight = simBottomRight;
+        this.BottomLeft = bottomLeft;
+        this.TopRight = topRight;
+        this.SimBottomLeft = simBottomLeft;
+        this.SimTopRight = simTopRight;
     }
-
-    public float LatPercent(Vector2 point)
-    {
-        // ((input - min) * 100) / (max - min)
-        return (point.x - TopLeft.x) * 100 / (BottomRight.x - TopLeft.x);
-    }
-
-    public float LonPercent(Vector2 point)
-    {
-        return (point.y - TopLeft.z) * 100 / (BottomRight.z - TopLeft.z);
-    }
-
-    public Vector3 SimPointFromPercentage(Vector3 pos1, Vector3 pos2, float percentage)
-    {
-        return Vector3.Lerp(pos1, pos2, percentage / 100);
-    }
-
-    public Vector3 GPSToSimPoint(Vector2 GPSPoint)
-    {
-        float percentLat = this.LatPercent(GPSPoint);
-        float percentLon =this.LonPercent(GPSPoint);
-
-        Vector3 simLat = this.SimPointFromPercentage(new Vector3(this.SimTopLeft.x, 0, this.SimTopLeft.z), new Vector3(this.SimBottomRight.x, 0, this.SimTopLeft.z), percentLat);
-        Vector3 simLon = this.SimPointFromPercentage(new Vector3(this.SimTopLeft.x, 0, this.SimTopLeft.z), new Vector3(this.SimTopLeft.x, 0, this.SimBottomRight.z), percentLon);
-
-        return new Vector3(simLat.x, 0, simLon.z);
-    }
-}
-
-[Serializable]
-public class Geometry
-{
-    public string type;
-    public List<List<List<double>>> coordinates { get; set; }
 }
 
 public class Buildings : MonoBehaviour
 {
     Mesh mesh;
-    string path = "./Assets/Ressources/MapData/titi.json";
     public Material material;
     public Material material2;
     public Material material3;
@@ -124,63 +77,59 @@ public class Buildings : MonoBehaviour
 
     void Start()
     {
-        //GeoZone();
-        float lat = 43.61101106499544f;
-        float lon = 1.4333198298248702f;
-
-        CoordinatesUtils.SquareFromCenter((lat, lon), 100);
+        GeoZone();
     }
 
     private void Update()
     {
     }
 
-    private BuildingsData ParseBuildings()
-    {
-        return JsonConvert.DeserializeObject<BuildingsData>(File.ReadAllText(path));
-    }
-
-    private void CreateBuildings(Tile currentTile)
-    {
-        BuildingsData datas = ParseBuildings();
-
-        foreach (Feature feat in datas.features)
-        {
-            feat.geometry.coordinates.ForEach(delegate (List<List<double>> one)
-            {
-                Vector3[] points = new Vector3[one.Count];
-
-                for (int i = 0; i < one.Count; i++)
-                {
-                    Vector2 Point = new Vector2((float)one[i][1], (float)one[i][0]);
-                    Vector3 simPos = currentTile.GPSToSimPoint(Point);
-
-                    /*GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    cube.transform.position = simPos;
-                    cube.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);*/
-
-                    points[i] = simPos;
-                }
-
-                FlatBuilding(points);
-            });
-        }
-    }
-
     private void GeoZone()
     {
-        Vector3 TLS = new Vector3(0, 0, 50);
-        Vector3 BRS = new Vector3(50, 0, 0);
 
-        Tile mainTile = new Tile(new Vector3(43.612219f, 0, 1.4207983f), new Vector3(43.5962856f, 0, 1.4460325f), TLS, BRS);
+        float lat = 43.59025623945865f;
+        float lon = 1.4394838799801293f;
+        float radius = 100;
+
+        var square = CoordinatesUtils.SquareFromCenter((lat, lon), radius);
+        var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 1, 0), radius);
+
+        var tile = new Tile(square[2], square[0], squareSim[2], squareSim[0]);
 
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = mainTile.SimTopLeft;
+        sphere.transform.position = tile.SimBottomLeft;
 
         GameObject sphere2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere2.transform.position = mainTile.SimBottomRight;
+        sphere2.transform.position = tile.SimTopRight;
 
-        CreateBuildings(mainTile);
+        StartCoroutine(Overpass.GetBuildingsInArea(tile, data =>
+        {
+            var dataProperties = JsonConvert.DeserializeObject<DataProperties>(data);
+            CreateBuildings(tile, dataProperties);
+        }));
+    }
+
+    private void CreateBuildings(Tile tile, DataProperties data)
+    {
+
+        foreach (Elements elem in data.elements)
+        {
+            Vector3[] points = new Vector3[elem.geometry.Length];
+
+            for (int i = 0; i < elem.geometry.Length; i++)
+            {
+                Coords geoPoint = new Coords(elem.geometry[i].lat, elem.geometry[i].lon);
+                Vector3 simPoint = SimCoordinatesUtils.GPSToSim(geoPoint, tile);
+                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+                cube.transform.position = simPoint;
+                cube.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+                points[i] = simPoint;
+            }
+
+            FlatBuilding(points);
+        }
     }
 
     private void FlatBuilding(Vector3[] points)
@@ -211,7 +160,7 @@ public class Buildings : MonoBehaviour
         for (int i = 0; i < vertices.Length - 1; i++)
         {
             roof[i] = new Vector2(vertices[i].x, vertices[i].z);
-            Debug.Log(roof[i]);
+            //Debug.Log(roof[i]);
         }
 
         Triangulator tr = new Triangulator(roof);

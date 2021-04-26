@@ -40,14 +40,35 @@ public class CoordinatesUtils
 
     // Create geo square from given center point.
     // Returns array with geopoint in clockwise order starting from top-right.
+    // Radius is distance between center point and each square edges.
     public static Coords[] SquareFromCenter((float Lat, float Lon) startPoint, float radius)
     {
         var square = new Coords[4];
         var bearings = new float[] { 45, 135, 225, 315 };
 
-        for (int i = 0; i < square.Length; i++)
+        for (int i = 0; i < bearings.Length; i++)
         {
             square[i] = Destination(startPoint, radius, bearings[i]);
+            //Debug.Log(square[i].Latitude + ", " + square[i].Longitude);
+        }
+
+        return square;
+    }
+
+
+    // Create sim(plane) square from given center point.
+    // Returns array with coordinates in clockwise order starting from top-right.
+    // Radius is distance between center point and each square edges.
+    public static Vector3[] SquareFromCenterSim(Vector3 startPoint, float radius) {
+        var square = new Vector3[4];
+        var angles = new float[] { 45, 135, 225, 315 };
+
+        for (int i = 0; i < angles.Length; i++)
+        {
+            var x = Mathf.Cos(angles[i] * Mathf.Deg2Rad);
+            var z = Mathf.Sin(angles[i] * Mathf.Deg2Rad);
+
+            square[i] = (new Vector3(x, 0, z) * radius) + startPoint;
         }
 
         return square;
