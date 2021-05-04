@@ -9,6 +9,7 @@ public struct Coords
         Latitude = latitude;
         Longitude = longitude;
     }
+
     public float Latitude { set; get; }
     public float Longitude { set; get; }
 }

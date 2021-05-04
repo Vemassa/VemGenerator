@@ -40,7 +40,7 @@ public static class Overpass
 
         form.AddField("data", "[out:json];way[\"building\"](" + areaString + ");out geom;");
 
-        using (UnityWebRequest www = UnityWebRequest.Post("https://overpass-api.de/api/interpreter", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("https://lz4.overpass-api.de/api/interpreter", form))
         {
             yield return www.SendWebRequest();
 

@@ -69,138 +69,154 @@ public class Tile
 
 public class Buildings : MonoBehaviour
 {
-    Mesh mesh;
     public Material material;
     public Material material2;
     public Material material3;
     public Material material4;
+    private GameObject mainObject;
 
     void Start()
     {
-        GeoZone();
-    }
+        mainObject = new GameObject("Buildings");
+        mainObject.transform.position = new Vector3(0, 0, 0);
 
-    private void Update()
-    {
-    }
-
-    private void GeoZone()
-    {
-
-        float lat = 43.59025623945865f;
-        float lon = 1.4394838799801293f;
+        float lat = 43.60565535565823f;
+        float lon = 1.434193407384454f;
         float radius = 100;
 
-        var square = CoordinatesUtils.SquareFromCenter((lat, lon), radius);
-        var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 1, 0), radius);
+        CreateBuildings(new Coords(lat, lon), radius);
+    }
 
+    public void CreateBuildings(Coords worldPoint, float worldRadius)
+    {
+        var square = CoordinatesUtils.SquareFromCenter((worldPoint.Latitude, worldPoint.Longitude), worldRadius);
+        var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 1, 0), 260);
         var tile = new Tile(square[2], square[0], squareSim[2], squareSim[0]);
 
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         sphere.transform.position = tile.SimBottomLeft;
+        sphere.transform.localScale = new Vector3(3, 3, 3);
 
         GameObject sphere2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         sphere2.transform.position = tile.SimTopRight;
+        sphere2.transform.localScale = new Vector3(3, 3, 3);
 
         StartCoroutine(Overpass.GetBuildingsInArea(tile, data =>
         {
-            var dataProperties = JsonConvert.DeserializeObject<DataProperties>(data);
-            CreateBuildings(tile, dataProperties);
+            var dataObj = JsonConvert.DeserializeObject<DataProperties>(data);
+
+            foreach (Elements elem in dataObj.elements)
+            {
+                Vector3[] points = new Vector3[elem.geometry.Length];
+
+                for (int i = 0; i < elem.geometry.Length; i++)
+                {
+                    Coords geoPoint = new Coords(elem.geometry[i].lat, elem.geometry[i].lon);
+                    Vector3 simPoint = SimCoordinatesUtils.GPSToSim(geoPoint, tile);
+
+                    points[i] = simPoint;
+                }
+
+                GenerateBuilding(points);
+            }
         }));
     }
 
-    private void CreateBuildings(Tile tile, DataProperties data)
+    private void GenerateBuilding(Vector3[] vertices)
     {
+        GameObject building = new GameObject("Building");
+        GameObject shapes = new GameObject("Shapes");
+        Mesh newMesh = new Mesh();
+        bool isClockwise = SimCoordinatesUtils.PolygonIsClockwise(vertices);
 
-        foreach (Elements elem in data.elements)
+        building.transform.parent = mainObject.transform;
+        building.transform.position = vertices[0];
+        shapes.transform.parent = building.transform;
+
+        shapes.AddComponent<MeshFilter>();
+        shapes.AddComponent<MeshRenderer>();
+        shapes.transform.position = new Vector3(0, 0, 0);
+        shapes.GetComponent<MeshFilter>().mesh = newMesh;
+        shapes.GetComponent<MeshRenderer>().material = material4;
+
+        // Pass as class constant variable.
+        const float buildingHeight = 5;
+        // Simulate extruded vertices with given height to transform 2D points into a 3D building.
+        Vector3[] extrudedVertices = new Vector3[vertices.Length * 2];
+        // Each face requires 2 triangles, which is equal to 6 points.
+        int[] triangles = new int[(vertices.Length - 1) * 6];
+
+        // For every vertice, add two elements to the new array: current vertice and generated extruded vertice.
+        for (int i = 0, t = 0; i < vertices.Length - 1; i += 1, t += 6)
         {
-            Vector3[] points = new Vector3[elem.geometry.Length];
+            // Add current vertice
+            extrudedVertices[i] = vertices[i];
+            // Add generated extruded vertice
+            extrudedVertices[(vertices.Length - 1) + i] = new Vector3(vertices[i].x, vertices[i].y + buildingHeight, vertices[i].z);
 
-            for (int i = 0; i < elem.geometry.Length; i++)
-            {
-                Coords geoPoint = new Coords(elem.geometry[i].lat, elem.geometry[i].lon);
-                Vector3 simPoint = SimCoordinatesUtils.GPSToSim(geoPoint, tile);
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            GenerateTriangles(triangles, vertices.Length - 1, i, t, isClockwise);
+        }
 
-                cube.transform.position = simPoint;
-                cube.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        int[] roof = GetRoofTriangles(extrudedVertices);
 
-                points[i] = simPoint;
-            }
+        triangles = triangles.Concat<int>(roof).ToArray();
+        newMesh.vertices = extrudedVertices;
+        newMesh.triangles = triangles;
+        newMesh.RecalculateNormals();
+    }
 
-            FlatBuilding(points);
+    // Triangles have to be built clock-wise.
+    // Depending if received data points are clockwise or counter-clockwise, triangles have to be built from different points.
+    private void GenerateTriangles(int[] triangles, int length, int iterator, int triangleIterator, bool isClockwise)
+    {
+        // Handle last vertices being connected to first one to complete polygon
+        var loopHandler = iterator + 1 >= length ? 0 : iterator + 1;
+
+        if (isClockwise)
+        {
+            // Current face first triangle
+            triangles[triangleIterator] = iterator;
+            triangles[triangleIterator + 1] = loopHandler;
+            triangles[triangleIterator + 2] = length + iterator;
+
+            // Current face second triangle
+            triangles[triangleIterator + 3] = loopHandler;
+            triangles[triangleIterator + 4] = length + loopHandler;
+            triangles[triangleIterator + 5] = length + iterator;
+        }
+        else
+        {
+            triangles[triangleIterator] = iterator;
+            triangles[triangleIterator + 1] = length + iterator;
+            triangles[triangleIterator + 2] = loopHandler;
+
+            triangles[triangleIterator + 3] = loopHandler;
+            triangles[triangleIterator + 4] = length + iterator;
+            triangles[triangleIterator + 5] = length + loopHandler;
         }
     }
 
-    private void FlatBuilding(Vector3[] points)
+    private int[] GetRoofTriangles(Vector3[] extrudedVertices)
     {
-        Vector3[] vertices = points;
-        Vector3[] extrudedVertices = new Vector3[vertices.Length * 2];
-        int[] triangles = new int[(vertices.Length - 1) * 6];
+        // Length of building 2D vertices array
+        var length = (extrudedVertices.Length / 2);
 
-        for (int i = 0, j = 0, y = 0; j < vertices.Length; i++, j++)
+        Vector2[] roof = new Vector2[length - 1];
+        for (int i = 0; i < length - 1; i++)
         {
-            extrudedVertices[i] = vertices[j];
-            extrudedVertices[++i] = new Vector3(vertices[j].x, vertices[j].y - 1, vertices[j].z);
-
-            if (y < triangles.Length)
-            {
-                triangles[y] = y == 0 ? 0 : triangles[y - 1] - 1; // 0
-                triangles[y + 1] = triangles[y] + 1; // 1
-                triangles[y + 2] = triangles[y] + 2; // 2
-                y += 3;
-                triangles[y] = triangles[y - 1];
-                triangles[y + 1] = triangles[y - 2];
-                triangles[y + 2] = triangles[y] + 1;
-                y += 3;
-            }
+            roof[i] = new Vector2(extrudedVertices[i].x, extrudedVertices[i].z);
         }
-
-        Vector2[] roof = new Vector2[vertices.Length - 1];
-        for (int i = 0; i < vertices.Length - 1; i++)
-        {
-            roof[i] = new Vector2(vertices[i].x, vertices[i].z);
-            //Debug.Log(roof[i]);
-        }
-
-        Triangulator tr = new Triangulator(roof);
-        int[] indices = tr.Triangulate();
         
-        for (int i = 0; i < indices.Length; i++)
+        Triangulator tr = new Triangulator(roof);
+        int[] triangles = tr.Triangulate();
+
+        // Create roof from extruded vertices instead of base
+        for (int i = 0; i < triangles.Length; i++)
         {
-            indices[i] *= 2;
+            triangles[i] += length - 1;
         }
 
-        int[] z = triangles.Concat(indices).ToArray();
-
-        GameObject newGameObject = new GameObject("Building");
-
-        newGameObject.AddComponent<MeshFilter>();
-        newGameObject.AddComponent<MeshRenderer>();
-        newGameObject.transform.position = new Vector3(0, 0, 0);
-
-        mesh = new Mesh();
-        newGameObject.GetComponent<MeshFilter>().mesh = mesh;
-        newGameObject.GetComponent<MeshRenderer>().material = material;
-        mesh.vertices = extrudedVertices;
-        mesh.triangles = z;
-        mesh.RecalculateNormals();
-
-        MeshFilter[] meshFilters = newGameObject.GetComponentsInChildren<MeshFilter>();
-        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
-
-        int i2 = 0;
-        while (i2 < meshFilters.Length)
-        {
-            combine[i2].mesh = meshFilters[i2].sharedMesh;
-            combine[i2].transform = meshFilters[i2].transform.localToWorldMatrix;
-            meshFilters[i2].gameObject.SetActive(false);
-
-            i2++;
-        }
-        newGameObject.GetComponent<MeshFilter>().mesh = new Mesh();
-        newGameObject.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
-        newGameObject.gameObject.SetActive(true);
+        return (triangles);
     }
 }
 
