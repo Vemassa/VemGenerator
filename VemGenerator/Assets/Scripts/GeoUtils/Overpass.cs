@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections;
+using System.IO;
+using System.Net;
+using System.Text;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public static class JsonHelper
 {
@@ -33,25 +34,32 @@ public static class JsonHelper
 }
 public static class Overpass
 {
-    public static IEnumerator GetBuildingsInArea(Tile tile, Action<string> callback)
+    public static string GetBuildingsInArea(Tile tile)
     {
+        HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create("https://lz4.overpass-api.de/api/interpreter");
         var areaString = tile.BottomLeft.Latitude.ToString().Replace(',', '.') + ", " + tile.BottomLeft.Longitude.ToString().Replace(',', '.') + ", " + tile.TopRight.Latitude.ToString().Replace(',', '.') + ", " + tile.TopRight.Longitude.ToString().Replace(',', '.');
-        WWWForm form = new WWWForm();
+        var postData = "data=" + "[out:json];way[\"building\"](" + areaString + ");out geom;";
+        var data = Encoding.ASCII.GetBytes(postData);
 
-        form.AddField("data", "[out:json];way[\"building\"](" + areaString + ");out geom;");
+        request.Method = "POST";
+        request.ContentType = "application/x-www-form-urlencoded";
+        request.ContentLength = data.Length;
 
-        using (UnityWebRequest www = UnityWebRequest.Post("https://lz4.overpass-api.de/api/interpreter", form))
+        Stream dataStream = request.GetRequestStream();
+        dataStream.Write(data, 0, data.Length);
+        dataStream.Close();
+
+        WebResponse response = request.GetResponse();
+        string responseFromServer = "";
+
+        using (dataStream = response.GetResponseStream())
         {
-            yield return www.SendWebRequest();
-
-            if (www.isHttpError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                callback(www.downloadHandler.text);
-            }
+            StreamReader reader = new StreamReader(dataStream);
+             responseFromServer = reader.ReadToEnd();
         }
+
+        response.Close();
+
+        return (responseFromServer);
     }
 }

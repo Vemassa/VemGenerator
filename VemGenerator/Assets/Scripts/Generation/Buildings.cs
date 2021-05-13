@@ -67,59 +67,64 @@ public class Tile
     }
 }
 
-public class Buildings : MonoBehaviour
+public sealed class Buildings
 {
-    public Material material;
-    public Material material2;
-    public Material material3;
-    public Material material4;
+    private static readonly Buildings instance = new Buildings();
+
+    private const float DEFAULT_WORLD_RADIUS = 100;
+
+    private readonly Material material;
     private GameObject mainObject;
 
-    void Start()
+    static Buildings() { }
+
+    private Buildings()
     {
-        mainObject = new GameObject("Buildings");
-        mainObject.transform.position = new Vector3(0, 0, 0);
-
-        float lat = 43.60565535565823f;
-        float lon = 1.434193407384454f;
-        float radius = 100;
-
-        CreateBuildings(new Coords(lat, lon), radius);
+        this.material = Resources.Load("MyMaterial") as Material;
     }
 
-    public void CreateBuildings(Coords worldPoint, float worldRadius)
+    public static Buildings Instance
     {
+        get
+        {
+            return instance;
+        }
+    }
+
+    private void SetupGOInstance()
+    {
+        this.mainObject = new GameObject("BuildingsRoot");
+        this.mainObject.transform.position = new Vector3(0, 0, 0);
+    }
+
+    public void CreateBuildings(Coords worldPoint, float worldRadius = DEFAULT_WORLD_RADIUS)
+    {
+        if (this.mainObject == null)
+        {
+            SetupGOInstance();
+        }
+
         var square = CoordinatesUtils.SquareFromCenter((worldPoint.Latitude, worldPoint.Longitude), worldRadius);
         var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 1, 0), 260);
         var tile = new Tile(square[2], square[0], squareSim[2], squareSim[0]);
 
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.position = tile.SimBottomLeft;
-        sphere.transform.localScale = new Vector3(3, 3, 3);
+        var data = Overpass.GetBuildingsInArea(tile);
+        var dataObj = JsonConvert.DeserializeObject<DataProperties>(data);
 
-        GameObject sphere2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere2.transform.position = tile.SimTopRight;
-        sphere2.transform.localScale = new Vector3(3, 3, 3);
-
-        StartCoroutine(Overpass.GetBuildingsInArea(tile, data =>
+        foreach (Elements elem in dataObj.elements)
         {
-            var dataObj = JsonConvert.DeserializeObject<DataProperties>(data);
+            Vector3[] points = new Vector3[elem.geometry.Length];
 
-            foreach (Elements elem in dataObj.elements)
+            for (int i = 0; i < elem.geometry.Length; i++)
             {
-                Vector3[] points = new Vector3[elem.geometry.Length];
+                Coords geoPoint = new Coords(elem.geometry[i].lat, elem.geometry[i].lon);
+                Vector3 simPoint = SimCoordinatesUtils.GPSToSim(geoPoint, tile);
 
-                for (int i = 0; i < elem.geometry.Length; i++)
-                {
-                    Coords geoPoint = new Coords(elem.geometry[i].lat, elem.geometry[i].lon);
-                    Vector3 simPoint = SimCoordinatesUtils.GPSToSim(geoPoint, tile);
-
-                    points[i] = simPoint;
-                }
-
-                GenerateBuilding(points);
+                points[i] = simPoint;
             }
-        }));
+
+            GenerateBuilding(points);
+        }
     }
 
     private void GenerateBuilding(Vector3[] vertices)
@@ -137,7 +142,7 @@ public class Buildings : MonoBehaviour
         shapes.AddComponent<MeshRenderer>();
         shapes.transform.position = new Vector3(0, 0, 0);
         shapes.GetComponent<MeshFilter>().mesh = newMesh;
-        shapes.GetComponent<MeshRenderer>().material = material4;
+        shapes.GetComponent<MeshRenderer>().material = this.material;
 
         // Pass as class constant variable.
         const float buildingHeight = 5;
