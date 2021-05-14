@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor;
 
 
 [Serializable]
@@ -89,7 +90,7 @@ public sealed class Buildings
         }
     }
 
-    public void CreateBuildings(Coords worldPoint, int worldRadius)
+    public void CreateEnvironment(Coords worldPoint, int worldRadius)
     {
         if (this.mainObject == null)
         {
@@ -97,11 +98,26 @@ public sealed class Buildings
         }
 
         var square = CoordinatesUtils.SquareFromCenter((worldPoint.Latitude, worldPoint.Longitude), worldRadius);
-        var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 1, 0), 260);
+        var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 1, 0), SessionState.GetInt("editor_radius", 0));
         var tile = new Tile(square[2], square[0], squareSim[2], squareSim[0]);
 
-        var data = Overpass.GetBuildingsInArea(tile);
+        // Retrieve data from API only if necessary
+        var data = SessionState.GetString("prev_environment", "");
+
+        if (SessionState.GetInt("prev_radius", 0) != worldRadius
+            || SessionState.GetFloat("prev_latitude", 0) != worldPoint.Latitude
+            || SessionState.GetFloat("prev_longitude", 0) != worldPoint.Longitude)
+        {
+            SessionState.SetFloat("prev_latitude", worldPoint.Latitude);
+            SessionState.SetFloat("prev_longitude", worldPoint.Longitude);
+            SessionState.SetInt("prev_radius", worldRadius);
+            data = Overpass.GetBuildingsInArea(tile);
+            Debug.Log("Querying API");
+        }
+        
         var dataObj = JsonConvert.DeserializeObject<DataProperties>(data);
+
+        SessionState.SetString("prev_environment", data);
 
         foreach (Elements elem in dataObj.elements)
         {

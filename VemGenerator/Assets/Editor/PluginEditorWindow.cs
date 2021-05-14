@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class PluginEditorWindow : EditorWindow
 {
-    static private Vector2 lastWorldPoint = new Vector2(0, 0);
-    static private int radius = 0;
-
     private const int MAX_RADIUS = 2000;
 
     [MenuItem("Tools/VemGeneration")]
@@ -16,21 +13,9 @@ public class PluginEditorWindow : EditorWindow
 
     public void OnGUI()
     {
-        EditorGUILayout.LabelField("Input datas", EditorStyles.boldLabel);
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Latitude / Longitude");
-        lastWorldPoint.y = EditorGUILayout.FloatField(lastWorldPoint.y);
-        lastWorldPoint.x = EditorGUILayout.FloatField(lastWorldPoint.x);
-        EditorGUILayout.EndHorizontal();
-
-        radius = EditorGUILayout.IntField("Radius (meters)", radius);
-        if (radius < 0)
-        {
-            radius = 0;
-        } else if (radius > MAX_RADIUS)
-        {
-            radius = MAX_RADIUS;
-        }
+        InputSettings();
+        EditorGUILayout.Space();
+        UnitySettings();
         EditorGUILayout.Space();
 
         #region Buttons
@@ -45,7 +30,7 @@ public class PluginEditorWindow : EditorWindow
                 DestroyImmediate(root);
             }
 
-            Buildings.Instance.CreateBuildings(new Coords(lastWorldPoint.y, lastWorldPoint.x), radius);
+            Buildings.Instance.CreateEnvironment(new Coords(SessionState.GetFloat("latitude", 0), SessionState.GetFloat("longitude", 0)), SessionState.GetInt("radius", 0));
         }
         if (GUILayout.Button("Reset", GUILayout.MaxWidth(300)))
         {
@@ -66,4 +51,61 @@ public class PluginEditorWindow : EditorWindow
         this.Repaint();
     }
 
+    private void InputSettings()
+    {
+        EditorGUILayout.LabelField("Input datas", EditorStyles.boldLabel);
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUI.BeginChangeCheck();
+
+        EditorGUILayout.LabelField("Latitude / Longitude");
+        var latitude = EditorGUILayout.FloatField(SessionState.GetFloat("latitude", 0));
+        var longitude = EditorGUILayout.FloatField(SessionState.GetFloat("longitude", 0));
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            SessionState.SetFloat("latitude", latitude);
+            SessionState.SetFloat("longitude", longitude);
+        }
+
+        EditorGUILayout.EndHorizontal();
+        EditorGUI.BeginChangeCheck();
+
+        var radius = EditorGUILayout.IntField("Radius (meters)", SessionState.GetInt("radius", 0));
+        if (radius < 0)
+        {
+            radius = 0;
+        }
+        else if (radius > MAX_RADIUS)
+        {
+            radius = MAX_RADIUS;
+        }
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            SessionState.SetInt("radius", radius);
+        }
+    }
+
+    private void UnitySettings()
+    {
+        EditorGUILayout.LabelField("Unity settings", EditorStyles.boldLabel);
+
+        EditorGUI.BeginChangeCheck();
+
+        var radius = EditorGUILayout.IntField("Radius (units)", SessionState.GetInt("editor_radius", 0));
+        if (radius < 0)
+        {
+            radius = 0;
+        }
+        else if (radius > MAX_RADIUS)
+        {
+            radius = MAX_RADIUS;
+        }
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            SessionState.SetInt("editor_radius", radius);
+        }
+    }
 }
