@@ -1,10 +1,12 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 
 public class PluginEditorWindow : EditorWindow
 {
     static private Vector2 lastWorldPoint = new Vector2(0, 0);
     static private int radius = 0;
+
+    private const int MAX_RADIUS = 2000;
 
     [MenuItem("Tools/VemGeneration")]
     public static void ShowWindow()
@@ -14,12 +16,27 @@ public class PluginEditorWindow : EditorWindow
 
     public void OnGUI()
     {
-        lastWorldPoint = EditorGUILayout.Vector2Field("Center point coordinates (x = Longitude, y = Latitude).", lastWorldPoint);
-        EditorGUILayout.Space();
-        radius = EditorGUILayout.IntField("Radius from center point (meters).", radius);
+        EditorGUILayout.LabelField("Input datas", EditorStyles.boldLabel);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Latitude / Longitude");
+        lastWorldPoint.y = EditorGUILayout.FloatField(lastWorldPoint.y);
+        lastWorldPoint.x = EditorGUILayout.FloatField(lastWorldPoint.x);
+        EditorGUILayout.EndHorizontal();
+
+        radius = EditorGUILayout.IntField("Radius (meters)", radius);
+        if (radius < 0)
+        {
+            radius = 0;
+        } else if (radius > MAX_RADIUS)
+        {
+            radius = MAX_RADIUS;
+        }
         EditorGUILayout.Space();
 
-        if (GUILayout.Button("Create"))
+        #region Buttons
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button("Create", GUILayout.MaxWidth(300)))
         {
             var root = GameObject.Find("BuildingsRoot");
 
@@ -30,7 +47,7 @@ public class PluginEditorWindow : EditorWindow
 
             Buildings.Instance.CreateBuildings(new Coords(lastWorldPoint.y, lastWorldPoint.x), radius);
         }
-        if (GUILayout.Button("Reset"))
+        if (GUILayout.Button("Reset", GUILayout.MaxWidth(300)))
         {
             var root = GameObject.Find("BuildingsRoot");
 
@@ -39,6 +56,9 @@ public class PluginEditorWindow : EditorWindow
                 DestroyImmediate(root);
             }
         }
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        #endregion
     }
 
     private void OnInspectorUpdate()
