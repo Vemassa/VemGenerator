@@ -98,7 +98,7 @@ public sealed class Buildings
         }
 
         var square = CoordinatesUtils.SquareFromCenter((worldPoint.Latitude, worldPoint.Longitude), worldRadius);
-        var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 1, 0), SessionState.GetInt("editor_radius", 0));
+        var squareSim = CoordinatesUtils.SquareFromCenterSim(SessionState.GetVector3("editor_center_point", new Vector3(0, 0, 0)), SessionState.GetInt("editor_radius", 0));
         var tile = new Tile(square[2], square[0], squareSim[2], squareSim[0]);
 
         // Retrieve data from API only if necessary
@@ -138,7 +138,7 @@ public sealed class Buildings
     private void SetupGOInstance()
     {
         this.mainObject = new GameObject("BuildingsRoot");
-        this.mainObject.transform.position = new Vector3(0, 0, 0);
+        this.mainObject.transform.position = SessionState.GetVector3("editor_center_point", new Vector3(0, 0, 0));
     }
 
     private void GenerateBuilding(Vector3[] vertices)
@@ -152,7 +152,7 @@ public sealed class Buildings
         GameObject shapes = new GameObject("Shapes");
 
         building.transform.parent = mainObject.transform;
-        building.transform.position = new Vector3(0, 0, 0);
+        building.transform.position = mainObject.transform.position;
         shapes.transform.parent = building.transform;
 
         shapes.AddComponent<MeshFilter>();

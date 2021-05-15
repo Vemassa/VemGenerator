@@ -13,37 +13,17 @@ public class PluginEditorWindow : EditorWindow
 
     public void OnGUI()
     {
+        if (!EditorGUIUtility.wideMode)
+        {
+            EditorGUIUtility.wideMode = true;
+            EditorGUIUtility.labelWidth = EditorGUIUtility.currentViewWidth - 212;
+        }
+
         InputSettings();
         EditorGUILayout.Space();
         UnitySettings();
         EditorGUILayout.Space();
-
-        #region Buttons
-        EditorGUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
-        if (GUILayout.Button("Create", GUILayout.MaxWidth(300)))
-        {
-            var root = GameObject.Find("BuildingsRoot");
-
-            if (root != null)
-            {
-                DestroyImmediate(root);
-            }
-
-            Buildings.Instance.CreateEnvironment(new Coords(SessionState.GetFloat("latitude", 0), SessionState.GetFloat("longitude", 0)), SessionState.GetInt("radius", 0));
-        }
-        if (GUILayout.Button("Reset", GUILayout.MaxWidth(300)))
-        {
-            var root = GameObject.Find("BuildingsRoot");
-
-            if (root != null)
-            {
-                DestroyImmediate(root);
-            }
-        }
-        GUILayout.FlexibleSpace();
-        EditorGUILayout.EndHorizontal();
-        #endregion
+        ActionButtons();
     }
 
     private void OnInspectorUpdate()
@@ -107,5 +87,43 @@ public class PluginEditorWindow : EditorWindow
         {
             SessionState.SetInt("editor_radius", radius);
         }
+
+        EditorGUI.BeginChangeCheck();
+
+        Vector3 position = EditorGUILayout.Vector3Field("Center point", SessionState.GetVector3("editor_center_point", new Vector3(0, 0, 0)));
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            SessionState.SetVector3("editor_center_point", position);
+        }
+
+    }
+
+    private void ActionButtons()
+    {
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        if (GUILayout.Button("Create", GUILayout.MaxWidth(300)))
+        {
+            var root = GameObject.Find("BuildingsRoot");
+
+            if (root != null)
+            {
+                DestroyImmediate(root);
+            }
+
+            Buildings.Instance.CreateEnvironment(new Coords(SessionState.GetFloat("latitude", 0), SessionState.GetFloat("longitude", 0)), SessionState.GetInt("radius", 0));
+        }
+        if (GUILayout.Button("Reset", GUILayout.MaxWidth(300)))
+        {
+            var root = GameObject.Find("BuildingsRoot");
+
+            if (root != null)
+            {
+                DestroyImmediate(root);
+            }
+        }
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
     }
 }
