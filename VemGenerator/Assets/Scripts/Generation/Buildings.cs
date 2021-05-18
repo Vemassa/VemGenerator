@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 using UnityEditor;
 
 
@@ -72,6 +71,7 @@ public sealed class Buildings
 {
     private static readonly Buildings instance = new Buildings();
 
+    private const string GAMEOBJECT_NAME = "Buildings";
     private readonly Material material;
     private GameObject mainObject;
 
@@ -90,29 +90,35 @@ public sealed class Buildings
         }
     }
 
-    public void CreateEnvironment(Coords worldPoint, int worldRadius)
+    public GameObject GetGameObject()
     {
-        if (this.mainObject == null)
+        if (mainObject == null)
         {
-            SetupGOInstance();
+            mainObject = GameObject.Find(GAMEOBJECT_NAME);
         }
 
+        return mainObject;
+    }
+
+    public void CreateEnvironment(Coords worldPoint, int worldRadius, Vector3 editorPoint, float height)
+    {
+        SetupGOInstance(editorPoint);
+
         var square = CoordinatesUtils.SquareFromCenter((worldPoint.Latitude, worldPoint.Longitude), worldRadius);
-        var squareSim = CoordinatesUtils.SquareFromCenterSim(SessionState.GetVector3("editor_center_point", new Vector3(0, 0, 0)), SessionState.GetInt("editor_radius", 0));
+        var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 0, 0), SessionState.GetInt("editor_radius", 0));
         var tile = new Tile(square[2], square[0], squareSim[2], squareSim[0]);
 
         // Retrieve data from API only if necessary
         var data = SessionState.GetString("prev_environment", "");
 
-        if (SessionState.GetInt("prev_radius", 0) != worldRadius
-            || SessionState.GetFloat("prev_latitude", 0) != worldPoint.Latitude
-            || SessionState.GetFloat("prev_longitude", 0) != worldPoint.Longitude)
+        if (SettingsHaveChanged(worldPoint, worldRadius, height) == true)
         {
             SessionState.SetFloat("prev_latitude", worldPoint.Latitude);
             SessionState.SetFloat("prev_longitude", worldPoint.Longitude);
             SessionState.SetInt("prev_radius", worldRadius);
+            SessionState.SetFloat("prev_editor_heigh", height);
             data = Overpass.GetBuildingsInArea(tile);
-            Debug.Log("Querying API");
+            //Debug.Log("Querying API: " + data);
         }
         
         var dataObj = JsonConvert.DeserializeObject<DataProperties>(data);
@@ -131,20 +137,26 @@ public sealed class Buildings
                 points[i] = simPoint;
             }
 
-            GenerateBuilding(points);
+            GenerateBuilding(points, height);
         }
     }
 
-    private void SetupGOInstance()
+    private void SetupGOInstance(Vector3 origin)
     {
-        this.mainObject = new GameObject("BuildingsRoot");
-        this.mainObject.transform.position = SessionState.GetVector3("editor_center_point", new Vector3(0, 0, 0));
+        this.mainObject = new GameObject(GAMEOBJECT_NAME);
+        this.mainObject.transform.position = origin;
     }
 
-    private void GenerateBuilding(Vector3[] vertices)
+    private bool SettingsHaveChanged(Coords worldPoint, int worldRadius, float height)
     {
-        // Pass as class constant variable.
-        const float buildingHeight = 5;
+        return !(SessionState.GetInt("prev_radius", 0) == worldRadius
+            && SessionState.GetFloat("prev_latitude", 0) == worldPoint.Latitude
+            && SessionState.GetFloat("prev_longitude", 0) == worldPoint.Longitude
+            && SessionState.GetFloat("prev_editor_heigh", 0) == height);
+    }
+
+    private void GenerateBuilding(Vector3[] vertices, float height)
+    {
         var isClockwise = SimCoordinatesUtils.PolygonIsClockwise(vertices);
 
         Mesh newMesh = new Mesh();
@@ -167,7 +179,7 @@ public sealed class Buildings
 
         for (int i = 0; i < vertices.Length; i++)
         {
-            extrudedVertices[i] = new Vector3(vertices[i].x, vertices[i].y + buildingHeight, vertices[i].z);
+            extrudedVertices[i] = new Vector3(vertices[i].x, vertices[i].y + height, vertices[i].z);
 
             if (i > 0)
             {

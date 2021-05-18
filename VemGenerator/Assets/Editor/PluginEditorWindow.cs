@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class PluginEditorWindow : EditorWindow
 {
-    private const int MAX_RADIUS = 2000;
+    private const int MAX_RADIUS = 5000;
+    private const int DEFAULT_EDITOR_RADIUS = 300;
+    private const int DEFAULT_EDITOR_HEIGHT = 5;
+    private readonly Vector3 DEFAULT_EDITOR_POINT = new Vector3(0, 0, 0);
 
     [MenuItem("Tools/VemGeneration")]
     public static void ShowWindow()
@@ -73,7 +76,7 @@ public class PluginEditorWindow : EditorWindow
 
         EditorGUI.BeginChangeCheck();
 
-        var radius = EditorGUILayout.IntField("Radius (units)", SessionState.GetInt("editor_radius", 0));
+        var radius = EditorGUILayout.IntField("Radius (units)", SessionState.GetInt("editor_radius", DEFAULT_EDITOR_RADIUS));
         if (radius < 0)
         {
             radius = 0;
@@ -90,13 +93,12 @@ public class PluginEditorWindow : EditorWindow
 
         EditorGUI.BeginChangeCheck();
 
-        Vector3 position = EditorGUILayout.Vector3Field("Center point", SessionState.GetVector3("editor_center_point", new Vector3(0, 0, 0)));
+        var height = EditorGUILayout.FloatField("Height (units)", SessionState.GetFloat("editor_height", DEFAULT_EDITOR_HEIGHT));
 
         if (EditorGUI.EndChangeCheck())
         {
-            SessionState.SetVector3("editor_center_point", position);
+            SessionState.SetFloat("editor_height", height);
         }
-
     }
 
     private void ActionButtons()
@@ -105,22 +107,27 @@ public class PluginEditorWindow : EditorWindow
         GUILayout.FlexibleSpace();
         if (GUILayout.Button("Create", GUILayout.MaxWidth(300)))
         {
-            var root = GameObject.Find("BuildingsRoot");
+            GameObject buildings = Buildings.Instance.GetGameObject();
 
-            if (root != null)
+            if (buildings != null)
             {
-                DestroyImmediate(root);
+                DestroyImmediate(buildings);
             }
 
-            Buildings.Instance.CreateEnvironment(new Coords(SessionState.GetFloat("latitude", 0), SessionState.GetFloat("longitude", 0)), SessionState.GetInt("radius", 0));
+            Buildings.Instance.CreateEnvironment(new Coords(SessionState.GetFloat("latitude", 0),
+                SessionState.GetFloat("longitude", 0)),
+                SessionState.GetInt("radius", 0),
+                DEFAULT_EDITOR_POINT,
+                SessionState.GetFloat("editor_height",
+                DEFAULT_EDITOR_HEIGHT));
         }
-        if (GUILayout.Button("Reset", GUILayout.MaxWidth(300)))
+        if (GUILayout.Button("Destroy", GUILayout.MaxWidth(300)))
         {
-            var root = GameObject.Find("BuildingsRoot");
+            GameObject buildings = Buildings.Instance.GetGameObject();
 
-            if (root != null)
+            if (buildings != null)
             {
-                DestroyImmediate(root);
+                DestroyImmediate(buildings);
             }
         }
         GUILayout.FlexibleSpace();
