@@ -100,12 +100,12 @@ public sealed class Buildings
         return mainObject;
     }
 
-    public void CreateEnvironment(Coords worldPoint, int worldRadius, Vector3 editorPoint, float height)
+    public void CreateEnvironment(Coords worldPoint, int worldRadius, Vector3 editorPoint, float height, int editorRadius)
     {
         SetupGOInstance(editorPoint);
 
         var square = CoordinatesUtils.SquareFromCenter((worldPoint.Latitude, worldPoint.Longitude), worldRadius);
-        var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 0, 0), SessionState.GetInt("editor_radius", 0));
+        var squareSim = CoordinatesUtils.SquareFromCenterSim(new Vector3(0, 0, 0), editorRadius);
         var tile = new Tile(square[2], square[0], squareSim[2], squareSim[0]);
 
         // Retrieve data from API only if necessary
@@ -118,7 +118,6 @@ public sealed class Buildings
             SessionState.SetInt("prev_radius", worldRadius);
             SessionState.SetFloat("prev_editor_heigh", height);
             data = Overpass.GetBuildingsInArea(tile);
-            //Debug.Log("Querying API: " + data);
         }
         
         var dataObj = JsonConvert.DeserializeObject<DataProperties>(data);

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PluginEditorWindow : EditorWindow
 {
-    private const int MAX_RADIUS = 5000;
+    private const int MAX_RADIUS = 2500;
     private const int DEFAULT_EDITOR_RADIUS = 300;
     private const int DEFAULT_EDITOR_HEIGHT = 5;
     private readonly Vector3 DEFAULT_EDITOR_POINT = new Vector3(0, 0, 0);
@@ -27,6 +27,11 @@ public class PluginEditorWindow : EditorWindow
         UnitySettings();
         EditorGUILayout.Space();
         ActionButtons();
+    }
+
+    private void Awake()
+    {
+        SessionState.SetInt("editor_radius", DEFAULT_EDITOR_RADIUS);
     }
 
     private void OnInspectorUpdate()
@@ -81,10 +86,6 @@ public class PluginEditorWindow : EditorWindow
         {
             radius = 0;
         }
-        else if (radius > MAX_RADIUS)
-        {
-            radius = MAX_RADIUS;
-        }
 
         if (EditorGUI.EndChangeCheck())
         {
@@ -119,7 +120,8 @@ public class PluginEditorWindow : EditorWindow
                 SessionState.GetInt("radius", 0),
                 DEFAULT_EDITOR_POINT,
                 SessionState.GetFloat("editor_height",
-                DEFAULT_EDITOR_HEIGHT));
+                DEFAULT_EDITOR_HEIGHT),
+                SessionState.GetInt("editor_radius", 0));
         }
         if (GUILayout.Button("Destroy", GUILayout.MaxWidth(300)))
         {
